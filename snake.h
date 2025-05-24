@@ -5,7 +5,7 @@
 
 #define MAX_SNAKE_LENGTH 100
 
-typedef struct Snake {
+typedef struct {
     Vector2 positions[MAX_SNAKE_LENGTH];
     int length;
     Vector2 direction;
@@ -13,4 +13,4 @@ typedef struct Snake {
 
 void DrawSnake(Snake *snake);
 
-#endif
+#endif // SNAKE_H

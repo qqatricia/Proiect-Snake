@@ -8,4 +8,4 @@ void UpdateMenu(void);
 void DrawMenu(void);
 bool IsMenuActive(void);
 
-#endif
+#endif // MENU_H

@@ -4,11 +4,11 @@
 #include "raylib.h"
 #include "snake.h"
 
-typedef struct Food {
+typedef struct {
     Vector2 position;
 } Food;
 
 void SpawnFood(Food *food, Snake snake);
-void DrawFood(Food *food);
+void DrawFood(Food food);
 
-#endif
+#endif // FOOD_H

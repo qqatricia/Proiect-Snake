@@ -1,22 +1,32 @@
 #include "food.h"
+#include "config.h"
+#include "raylib.h"
 #include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
 
-void SpawnFood(Food *food, Snake snake) {
-    bool validPosition = false;
-    while (!validPosition) {
-        food->position.x = rand() % (400 / 20);
-        food->position.y = rand() % (400 / 20);
-
-        validPosition = true;
-        for (int i = 0; i < snake.length; i++) {
-            if (snake.positions[i].x == food->position.x && snake.positions[i].y == food->position.y) {
-                validPosition = false;
-                break;
-            }
+static bool PositionInSnake(Vector2 pos, Snake snake) {
+    for (int i = 0; i < snake.length; i++) {
+        if (snake.positions[i].x == pos.x && snake.positions[i].y == pos.y) {
+            return true;
         }
     }
+    return false;
 }
 
-void DrawFood(Food *food) {
-    DrawRectangle(food->position.x * 20, food->position.y * 20, 20, 20, RED);
+void SpawnFood(Food *food, Snake snake) {
+    int maxX = SCREEN_WIDTH / CELL_SIZE;
+    int maxY = SCREEN_HEIGHT / CELL_SIZE;
+
+    Vector2 pos;
+    do {
+        pos.x = rand() % maxX;
+        pos.y = rand() % maxY;
+    } while (PositionInSnake(pos, snake));
+
+    food->position = pos;
+}
+
+void DrawFood(Food food) {
+    DrawRectangle(food.position.x * CELL_SIZE, food.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE, RED);
 }
