@@ -44,23 +44,42 @@ void UpdateGame() {
     }
 }
 
-void DrawGame() {
-    ClearBackground(RAYWHITE);
+void DrawSnake(Snake *snake) {
+    for (int i = 0; i < snake->length; i++) {
+        Rectangle segment = {
+            snake->positions[i].x * CELL_SIZE,
+            snake->positions[i].y * CELL_SIZE,
+            CELL_SIZE,
+            CELL_SIZE
+        };
 
-    if (gameOver) {
-        DrawText("Game Over!", 100, 200, 40, RED);
-        DrawText(TextFormat("Final Score: %d", score), 100, 250, 30, DARKGRAY);
-        return;
+        if (i == 0) {
+            // Capul șarpelui – culoare distinctă
+            DrawRectangleRec(segment, DARKGREEN);
+
+            // Desenare ochi
+            int eyeRadius = 2;
+            int eyeOffsetX = 4;
+            int eyeOffsetY = 4;
+
+            Vector2 eye1 = {
+                segment.x + eyeOffsetX,
+                segment.y + eyeOffsetY
+            };
+            Vector2 eye2 = {
+                segment.x + CELL_SIZE - eyeOffsetX,
+                segment.y + eyeOffsetY
+            };
+
+            DrawCircleV(eye1, eyeRadius, WHITE);
+            DrawCircleV(eye2, eyeRadius, WHITE);
+        } else {
+            // Corpul șarpelui
+            DrawRectangleRec(segment, GREEN);
+        }
     }
-
-    // Desenare sarpe
-    for (int i = 0; i < snake.length; i++) {
-        DrawRectangle(snake.body[i].x * CELL_SIZE, snake.body[i].y * CELL_SIZE, CELL_SIZE, CELL_SIZE, DARKGREEN);
-    }
-
-    DrawFood();
-    DrawText(TextFormat("Score: %d", score), 10, 10, 20, BLACK);
 }
+
 
 void SetDirection(Vector2 dir) {
     if (!pauseGame && !gameOver) snake.direction = dir;
