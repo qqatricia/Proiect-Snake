@@ -1,6 +1,8 @@
 #include "food.h"
 #include "config.h"
 #include <stdlib.h>
+#include "utils.h"
+
 
 void InitFood(Food* food) {
     SpawnFood(food);

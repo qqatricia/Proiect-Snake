@@ -1,5 +1,7 @@
 #include "snake.h"
 #include "config.h"
+#include "utils.h"
+
 
 void InitSnake(Snake* snake) {
     snake->length = 5;
