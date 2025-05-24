@@ -1,0 +1,12 @@
+Ce culoare are cerul?
+albastru
+verde
+0
+Cate zile are o saptamana?
+7
+6
+0
+Ce culoare are iarba?
+rosu
+verde
+1
