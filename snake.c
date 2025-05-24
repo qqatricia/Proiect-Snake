@@ -1,13 +1,12 @@
 #include "snake.h"
-#include "config.h"
+#include "config.h"   // inclus
 #include "utils.h"
-
 
 void InitSnake(Snake* snake) {
     snake->length = 5;
     snake->dir = DIR_RIGHT;
     for (int i = 0; i < snake->length; i++) {
-        snake->positions[i] = (Vector2){(float)(50 - i*20), 50.0f};
+        snake->positions[i] = (Vector2){(float)(50 - i * CELL_SIZE), 50.0f};
     }
 }
 
@@ -17,23 +16,23 @@ void UpdateSnake(Snake* snake) {
     }
     switch (snake->dir) {
         case DIR_UP:
-            snake->positions[0].y -= 20;
+            snake->positions[0].y -= CELL_SIZE;
             break;
         case DIR_DOWN:
-            snake->positions[0].y += 20;
+            snake->positions[0].y += CELL_SIZE;
             break;
         case DIR_LEFT:
-            snake->positions[0].x -= 20;
+            snake->positions[0].x -= CELL_SIZE;
             break;
         case DIR_RIGHT:
-            snake->positions[0].x += 20;
+            snake->positions[0].x += CELL_SIZE;
             break;
     }
 }
 
 void DrawSnake(const Snake* snake) {
     for (int i = 0; i < snake->length; i++) {
-        DrawRectangleV(snake->positions[i], (Vector2){20, 20}, GREEN);
+        DrawRectangleV(snake->positions[i], (Vector2){CELL_SIZE, CELL_SIZE}, GREEN);
     }
 }
 

@@ -1,4 +1,7 @@
 #include "game.h"
+#include "config.h"   // inclus
+#include "snake.h"
+#include "food.h"
 #include "question.h"
 #include <raylib.h>
 
@@ -19,6 +22,7 @@ void UpdateGame(void) {
         return;
     }
 
+    // Exemplu folosire CELL_SIZE
     // Logica jocului când nu este pauză:
     // - actualizarea poziției șarpelui
     // - detectarea coliziunilor

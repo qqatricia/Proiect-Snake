@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "config.h"
+#include "config.h"  // deja inclus
 #include "game.h"
 #include "menu.h"
 #include "question.h"
