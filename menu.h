@@ -6,6 +6,7 @@
 void InitMenu(void);
 void UpdateMenu(void);
 void DrawMenu(void);
-bool IsMenuActive(void);
+bool IsGameStarted(void);
+bool IsExitRequested(void);
 
 #endif // MENU_H

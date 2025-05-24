@@ -1,31 +1,35 @@
 #include "menu.h"
-#include "raylib.h"
-#include "config.h"
+#include <raylib.h>
 #include <stdlib.h>
 
-static bool menuActive = true;
+static bool gameStarted = false;
+static bool exitRequested = false;
 
 void InitMenu(void) {
-    menuActive = true;
-}
-
-bool IsMenuActive(void) {
-    return menuActive;
+    gameStarted = false;
+    exitRequested = false;
 }
 
 void UpdateMenu(void) {
     if (IsKeyPressed(KEY_ENTER)) {
-        menuActive = false;
+        gameStarted = true;
     }
     if (IsKeyPressed(KEY_ESCAPE)) {
-        CloseWindow();
-        exit(0);
+        exitRequested = true;
     }
 }
 
 void DrawMenu(void) {
     ClearBackground(RAYWHITE);
-    DrawText("Snake with Questions", SCREEN_WIDTH / 2 - MeasureText("Snake with Questions", 40) / 2, SCREEN_HEIGHT / 3, 40, DARKGREEN);
-    DrawText("Press ENTER to Start", SCREEN_WIDTH / 2 - MeasureText("Press ENTER to Start", 20) / 2, SCREEN_HEIGHT / 2, 20, DARKGRAY);
-    DrawText("Press ESC to Exit", SCREEN_WIDTH / 2 - MeasureText("Press ESC to Exit", 20) / 2, SCREEN_HEIGHT / 2 + 30, 20, DARKGRAY);
+    DrawText("SNAKE CU INTREBARI", 200, 100, 40, DARKGREEN);
+    DrawText("ENTER - Start Game", 250, 200, 20, DARKGRAY);
+    DrawText("ESC - Exit", 250, 240, 20, DARKGRAY);
+}
+
+bool IsGameStarted(void) {
+    return gameStarted;
+}
+
+bool IsExitRequested(void) {
+    return exitRequested;
 }

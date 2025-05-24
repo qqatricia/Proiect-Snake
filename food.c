@@ -1,32 +1,24 @@
 #include "food.h"
 #include "config.h"
-#include "raylib.h"
 #include <stdlib.h>
-#include <time.h>
-#include <stdbool.h>
 
-static bool PositionInSnake(Vector2 pos, Snake snake) {
-    for (int i = 0; i < snake.length; i++) {
-        if (snake.positions[i].x == pos.x && snake.positions[i].y == pos.y) {
-            return true;
-        }
-    }
-    return false;
+void InitFood(Food* food) {
+    SpawnFood(food);
 }
 
-void SpawnFood(Food *food, Snake snake) {
-    int maxX = SCREEN_WIDTH / CELL_SIZE;
-    int maxY = SCREEN_HEIGHT / CELL_SIZE;
-
-    Vector2 pos;
-    do {
-        pos.x = rand() % maxX;
-        pos.y = rand() % maxY;
-    } while (PositionInSnake(pos, snake));
-
-    food->position = pos;
+void SpawnFood(Food* food) {
+    int gridX = rand() % (SCREEN_WIDTH / 20);
+    int gridY = rand() % (SCREEN_HEIGHT / 20);
+    food->position.x = gridX * 20;
+    food->position.y = gridY * 20;
+    food->points = (rand() % 2) + 1; // 1 sau 2 puncte
 }
 
-void DrawFood(Food food) {
-    DrawRectangle(food.position.x * CELL_SIZE, food.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE, RED);
+void DrawFood(const Food* food) {
+    Color color = (food->points == 1) ? RED : ORANGE;
+    DrawRectangleV(food->position, (Vector2){20, 20}, color);
+}
+
+bool CheckFoodEaten(const Food* food, Vector2 snakeHead) {
+    return Vector2Equals(food->position, snakeHead);
 }

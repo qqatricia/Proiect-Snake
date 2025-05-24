@@ -1,63 +1,44 @@
-#include "raylib.h"
+#include <raylib.h>
+#include "config.h"
 #include "game.h"
 #include "menu.h"
 #include "question.h"
-#include "config.h"
 
-int main(void)
-{
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake with Questions");
-    SetTargetFPS(10);
+int main(void) {
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake cu intrebari");
 
     InitMenu();
     InitGame();
     InitQuestions();
 
-    while (!WindowShouldClose())
-    {
-        if (IsMenuActive())
-        {
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose()) {
+        if (!IsGameStarted()) {
             UpdateMenu();
-        }
-        else
-        {
-            // Gestionează inputul global
-            if (!IsQuestionActive())  // Dacă nu e întrebarea afișată
-            {
-                if (IsKeyDown(KEY_RIGHT)) SetDirection((Vector2){1,0});
-                else if (IsKeyDown(KEY_LEFT)) SetDirection((Vector2){-1,0});
-                else if (IsKeyDown(KEY_UP)) SetDirection((Vector2){0,-1});
-                else if (IsKeyDown(KEY_DOWN)) SetDirection((Vector2){0,1});
-            }
-            else
-            {
+            BeginDrawing();
+            DrawMenu();
+            EndDrawing();
+
+            if (IsExitRequested()) break;
+        } else {
+            if (!IsQuestionActive()) {
+                UpdateGame();
+            } else {
                 bool answeredCorrect = HandleQuestionInput();
                 if (answeredCorrect || IsQuestionAnswered()) {
                     ResumeGame(answeredCorrect);
                 }
             }
-            
-            UpdateGame();
-        }
 
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        if (IsMenuActive())
-        {
-            DrawMenu();
-        }
-        else
-        {
+            BeginDrawing();
             DrawGame();
-            if (IsQuestionActive())
-                DrawQuestion();
-        }
+            EndDrawing();
 
-        EndDrawing();
+            if (gameOver) break;
+        }
     }
 
     CloseWindow();
-
     return 0;
 }
