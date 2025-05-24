@@ -5,71 +5,54 @@
 #include <time.h>
 
 #define MAX_QUESTIONS 100
-#define MAX_LINE_LENGTH 256
 
 static Question questions[MAX_QUESTIONS];
-static int totalQuestions = 0;
-static int usedIndexes[MAX_QUESTIONS];
-static int usedCount = 0;
+static int questionsCount = 0;
 
 void LoadQuestions(const char *filename) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Eroare la deschiderea fisierului de intrebari!\n");
-        exit(1);
+    FILE *f = fopen(filename, "r");
+    if (!f) {
+        printf("Nu am putut incarca intrebari din %s\n", filename);
+        return;
     }
-
-    char line[MAX_LINE_LENGTH];
-    totalQuestions = 0;
-
-    while (fgets(line, sizeof(line), file) && totalQuestions < MAX_QUESTIONS) {
-        line[strcspn(line, "\n")] = 0;  // eliminare newline
-        char *token = strtok(line, "|");
-        if (!token) continue;
-        strncpy(questions[totalQuestions].text, token, sizeof(questions[totalQuestions].text));
-
-        token = strtok(NULL, "|");
-        if (!token) continue;
-        strncpy(questions[totalQuestions].option1, token, sizeof(questions[totalQuestions].option1));
-
-        token = strtok(NULL, "|");
-        if (!token) continue;
-        strncpy(questions[totalQuestions].option2, token, sizeof(questions[totalQuestions].option2));
-
-        token = strtok(NULL, "|");
-        if (!token) continue;
-        questions[totalQuestions].correctOption = atoi(token);
-
-        totalQuestions++;
-    }
-
-    fclose(file);
+    questionsCount = 0;
     srand(time(NULL));
+
+    char line[512];
+    while (fgets(line, sizeof(line), f) && questionsCount < MAX_QUESTIONS) {
+        char *token = strtok(line, ";");
+        if (!token) continue;
+        strncpy(questions[questionsCount].question, token, 255);
+        token = strtok(NULL, ";");
+        if (!token) continue;
+        strncpy(questions[questionsCount].option1, token, 99);
+        token = strtok(NULL, ";");
+        if (!token) continue;
+        strncpy(questions[questionsCount].option2, token, 99);
+        token = strtok(NULL, ";");
+        if (!token) continue;
+        questions[questionsCount].correctOption = atoi(token);
+        questionsCount++;
+    }
+    fclose(f);
 }
 
-Question GetRandomQuestion() {
-    if (totalQuestions == 0) {
-        printf("Nu exista intrebari incarcate.\n");
-        exit(1);
-    }
+int GetQuestionsCount(void) {
+    return questionsCount;
+}
 
-    if (usedCount == totalQuestions) {
-        usedCount = 0; // Resetare când s-au folosit toate întrebările
+Question GetRandomQuestion(int excludeIndex) {
+    if (questionsCount == 0) {
+        Question q = {"Nicio intrebare disponibila", "N/A", "N/A", 1};
+        return q;
     }
-
-    int index;
-    int alreadyUsed;
+    int idx;
     do {
-        index = rand() % totalQuestions;
-        alreadyUsed = 0;
-        for (int i = 0; i < usedCount; i++) {
-            if (usedIndexes[i] == index) {
-                alreadyUsed = 1;
-                break;
-            }
-        }
-    } while (alreadyUsed);
+        idx = rand() % questionsCount;
+    } while (idx == excludeIndex && questionsCount > 1);
+    return questions[idx];
+}
 
-    usedIndexes[usedCount++] = index;
-    return questions[index];
+void UnloadQuestions(void) {
+    questionsCount = 0;
 }

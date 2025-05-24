@@ -1,23 +1,25 @@
-Ce culoare are cerul?|Albastru|Verde|1
-Cate zile are o saptamana?|7|5|1
-Care este capitala Frantei?|Paris|Lyon|1
-Ce animal miauna?|Pisica|Caine|1
-Cate ore sunt intr-o zi?|24|12|1
-Ce forma are mingea de fotbal?|Rotunda|Patrata|1
-Care este cea mai mare planeta?|Jupiter|Marte|1
-Cine a scris "Luceafarul"?|Eminescu|Creanga|1
-Ce culoare are iarba?|Verde|Rosie|1
-Care este rezultatul lui 3+4?|7|8|1
-Ce anotimp urmeaza dupa toamna?|Iarna|Vara|1
-Ce mancam la micul dejun?|Omleta|Pizza|1
-Cum se numeste satelitul Pamantului?|Luna|Soarele|1
-Unde locuiesc pestii?|In apa|In copaci|1
-Care este opusul cuvantului "sus"?|Jos|Lateral|1
-Cine conduce o masina?|Soferul|Doctorul|1
-Cu ce scriem pe hartie?|Pix|Lingura|1
-Care este simbolul apei?|H2O|CO2|1
-Cate luni are un an?|12|10|1
-Ce culoare are soarele?|Galben|Albastru|1
-Ce se bea dimineata?|Cafea|Benzina|1
-Unde invatam?|La scoala|In piscina|1
-Cum latra un caine?|Ham|Miau|1
+Ce culoare are cerul?;albastru;verde;1
+Care este capitala Romaniei?;Bucuresti;Cluj;1
+Ce zi este astazi?;Luni;Marti;1
+Care e luna anului?;Mai;Iunie;2
+Ce fruct este galben si lung?;Mar;Banana;2
+Ce insecta zboara si face miere?;Albina;Furnica;1
+Ce animal miauna?;Caine;Pisica;2
+Care este capitala Frantei?;Paris;Londra;1
+Ce culoare are iarba?;Verde;Rosu;1
+Ce se foloseste pentru a scrie?;Pix;Furculita;1
+Care este cel mai inalt munte?;Everest;Alpi;1
+Ce vehicul merge pe apa?;Barca;Avion;1
+Ce mananci dimineata?;Pizza;Cereale;2
+Ce animal are trompa?;Elefant;Leu;1
+Ce culoare are soarele?;Galben;Albastru;1
+Care e cel mai mare ocean?;Atlantic;Pacific;2
+Ce oras este capitala Italiei?;Roma;Milano;1
+Ce leguma e portocalie?;Morcov;Rosie;1
+Ce facem cand suntem fericiti?;Plangem;Zambim;2
+Ce culoare are sangele?;Rosu;Albastru;1
+Ce se pune pe paine?;Unt;Lapte;1
+Care e anotimpul cald?;Vara;Iarna;1
+Ce animale traiesc in apa?;Pesti;Caini;1
+Ce instrument are coarde?;Toba;Chitara;2
+Care e culoarea zapezii?;Alb;Negru;1

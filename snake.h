@@ -5,18 +5,12 @@
 
 #define MAX_SNAKE_LENGTH 100
 
-typedef enum { UP, DOWN, LEFT, RIGHT } Direction;
-
-typedef struct {
-    Vector2 position[MAX_SNAKE_LENGTH];
+typedef struct Snake {
+    Vector2 positions[MAX_SNAKE_LENGTH];
     int length;
-    Direction dir;
-    int score;
+    Vector2 direction;
 } Snake;
 
-void InitSnake(Snake *snake);
-void UpdateSnake(Snake *snake);
-void GrowSnake(Snake *snake);
-void DrawSnake(Snake snake);
+void DrawSnake(Snake *snake);
 
 #endif

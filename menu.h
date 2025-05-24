@@ -1,8 +1,11 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "game.h"
+#include <stdbool.h>
 
-GameState RunMenu(void);
+void InitMenu(void);
+void UpdateMenu(void);
+void DrawMenu(void);
+bool IsMenuActive(void);
 
 #endif

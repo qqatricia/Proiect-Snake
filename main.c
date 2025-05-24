@@ -3,28 +3,25 @@
 #include "menu.h"
 
 int main(void) {
-    InitWindow(800, 600, "Snake Quiz Game");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake cu intrebari");
+    InitMenu();
+
     SetTargetFPS(10);
 
-    GameState gameState = MENU;
-
     while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(BLACK);
-
-        switch (gameState) {
-            case MENU:
-                gameState = RunMenu();
-                break;
-            case PLAYING:
-                RunGame(&gameState);
-                break;
-            case EXIT:
-                CloseWindow();
-                return 0;
+        if (IsMenuActive()) {
+            UpdateMenu();
+            BeginDrawing();
+            ClearBackground(BLACK);
+            DrawMenu();
+            EndDrawing();
+        } else {
+            UpdateGame();
+            BeginDrawing();
+            ClearBackground(BLACK);
+            DrawGame();
+            EndDrawing();
         }
-
-        EndDrawing();
     }
 
     CloseWindow();
