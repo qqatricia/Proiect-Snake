@@ -2,18 +2,16 @@
 #define GAME_H
 
 #include <stdbool.h>
-#include "snake.h"
-#include "food.h"
+#include <stddef.h>
+#include "config.h"
 
 extern bool pauseGame;
 extern bool gameOver;
-
-extern Snake snake;
-extern Food food;
 
 void InitGame(void);
 void UpdateGame(void);
 void DrawGame(void);
 void ResumeGame(bool correctAnswer);
+void CleanupGame(void);
 
 #endif // GAME_H

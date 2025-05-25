@@ -34,11 +34,11 @@ int main(void) {
             BeginDrawing();
             DrawGame();
             EndDrawing();
-
-            if (gameOver) break;
         }
     }
 
+    // Curăță resursele înainte de a închide fereastra
+    CleanupGame();
     CloseWindow();
     return 0;
 }

@@ -8,5 +8,6 @@ void UpdateMenu(void);
 void DrawMenu(void);
 bool IsGameStarted(void);
 bool IsExitRequested(void);
+bool IsShowingHowToPlay(void);
 
 #endif // MENU_H
