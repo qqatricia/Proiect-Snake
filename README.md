@@ -1,4 +1,4 @@
 # Proiect-Snake
-Colaborantii acestui proiect sunt Stancu Patricia-Ioana-312AC, Mitea Roberta Elena-314AC, Miruna, Edyra, Simona.
+Colaborantii acestui proiect sunt Stancu Patricia-Ioana(312AC), Mitea Roberta Elena(314AC), Sardaru Miruna-Andreea(314AC), Paraschiv Simona-Georgiana(314AC), Dumitrescu Laura (314AC), Flores-Botezatu Edyra (314AC).
 Impreuna am realizat un joc de tip Snake, unde primim intrebari de cultura generala de fiecare data cand sarpele intra in contact cu mancarea.
 Pentru a rula acest joc aveti nevoie de biblioteca raylib instalata si de comanda "X" in terminal. 

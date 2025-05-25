@@ -233,7 +233,7 @@ void DrawGame(void) {
                 SCREEN_HEIGHT / 2 + 20,
                 30, WHITE);
         
-        const char* restartText = "Apasa SPACE pentru a reîncepe";
+        const char* restartText = "Apasa ENTER pentru a reîncepe";
         textWidth = MeasureText(restartText, 20);
         DrawText(restartText,
                 (SCREEN_WIDTH - textWidth) / 2,
